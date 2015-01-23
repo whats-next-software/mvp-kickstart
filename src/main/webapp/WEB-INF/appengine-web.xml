@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. What's Next Software, LLC all rights reserved
+  -->
+
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <application>mvp-kickstart</application>
+
+    <!--We should experiment with removing this at some point-->
+    <version>1</version>
+
+    <!-- Configure serving/caching of GWT files -->
+    <static-files>
+        <include path="**" expiration="3m"/>
+        <exclude path="WEB-INF"/>
+    </static-files>
+
+    <!-- Configure java.util.logging -->
+    <system-properties>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    </system-properties>
+
+    <threadsafe>true</threadsafe>
+
+</appengine-web-app>
