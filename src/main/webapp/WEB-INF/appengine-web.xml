@@ -13,6 +13,7 @@
     <static-files>
         <include path="**" expiration="3m"/>
         <exclude path="WEB-INF"/>
+        <exclude path="index.html"/>
     </static-files>
 
     <!-- Configure java.util.logging -->

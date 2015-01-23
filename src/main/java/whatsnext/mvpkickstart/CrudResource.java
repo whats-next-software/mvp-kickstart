@@ -11,7 +11,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
  * Copyright (C) What's Next Software, LLC All Rights Reserved
  * Created by wayne on 1/22/2015.
  */
-@Path("cruds")
+@Path("/dyn/cruds")
 public class CrudResource {
     @POST
     @Path("{name}")

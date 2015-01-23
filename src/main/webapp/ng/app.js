@@ -16,7 +16,7 @@ define(
         }]);
 
         app.factory('Cruds', ['$resource', function($resource) {
-            return $resource('cruds', {}, {
+            return $resource('/dyn/cruds', {}, {
                 query: {
                     method:'GET',
                     isArray:true
@@ -25,7 +25,7 @@ define(
         }]);
 
         app.factory('NewCrud', ['$resource', function($resource) {
-            return $resource('cruds/:id', null, {
+            return $resource('/dyn/cruds/:id', null, {
                 update: {
                     method:'PUT'
                 }
