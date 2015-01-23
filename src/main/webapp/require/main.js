@@ -4,7 +4,7 @@ require.config({
         'angular' : '/bower_components/angular/angular.min',
         'angularAnimate' : '/bower_components/angular-animate/angular-animate.min',
         'angularRoute' : '/bower_components/angular-route/angular-route.min',
-        'physLay' : '/custom/physics-layout',
+        'angularResource' : '/bower_components/angular-resource/angular-resource.min',
         'app' : '/ng/app'
     },
     shim: {
@@ -20,12 +20,15 @@ require.config({
         },
         'angularRoute': {
             deps: ['angular']
+        },
+        'angularResource': {
+            deps: ['angular']
         }
     }
 });
 
 
-require(['jquery', 'angular','app', 'angularRoute'], function($, angular, app) {
+require(['jquery', 'angular','app', 'angularRoute', 'angularResource'], function($, angular, app) {
     angular.bootstrap(document, ['mvp-kickstart']);
 });
 

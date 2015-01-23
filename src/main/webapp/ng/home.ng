@@ -1,3 +1,7 @@
 <div>
-    Here I am
+    <ul>
+        <li class="animate-repeat" ng-repeat="crud in cruds">
+            {{$index + 1}} Id: {{crud.id}} Name: {{crud.name}}
+        </li>
+    </ul>
 </div>

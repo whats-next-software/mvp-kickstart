@@ -1,8 +1,8 @@
 define(
-    ['jquery', 'angular', 'angularRoute', 'angularAnimate'],
+    ['jquery', 'angular', 'angularRoute', 'angularAnimate', 'angularResource'],
     function ($, angular) {
 
-        var app = angular.module('mvp-kickstart', ['ngRoute', 'ngAnimate']);
+        var app = angular.module('mvp-kickstart', ['ngRoute', 'ngAnimate', 'ngResource']);
         app.config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/home', {
                 templateUrl: 'ng/home.ng',
@@ -15,6 +15,15 @@ define(
             });
         }]);
 
+        app.factory('Cruds', ['$resource', function($resource) {
+            return $resource('cruds', {}, {
+                query: {
+                    method:'GET',
+                    isArray:true
+                }
+            })
+        }]);
+
         app.directive("example-directive", function () {
             return {
                 restrict: 'A',
@@ -24,8 +33,9 @@ define(
         });
 
 
-        app.controller("HomeController", function ($scope) {
-        });
+        app.controller("HomeController", ['$scope', 'Cruds', function ($scope, cruds) {
+            $scope.cruds = cruds.query();
+        }]);
 
         return app;
     });
