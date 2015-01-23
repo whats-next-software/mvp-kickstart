@@ -5,12 +5,13 @@ apply plugin: 'war'
 sourceCompatibility = 1.7
 version = '1.0'
 
-def gradleHomeString = System.getenv('APPENGINE_HOME');
-if(gradleHomeString == null) {
+def appengineHomeString = System.getenv('APPENGINE_HOME');
+if(appengineHomeString == null) {
     throw new Exception("APPENGINE_HOME is not defined");
 }
+println "Using APPENGINE_HOME: $appengineHomeString"
 
-def appengineHome = new File(gradleHomeString);
+def appengineHome = new File(appengineHomeString);
 
 buildscript {
     repositories {
