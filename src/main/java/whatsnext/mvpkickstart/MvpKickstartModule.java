@@ -13,6 +13,7 @@ public class MvpKickstartModule implements Module {
     public void configure(Binder binder) {
         ObjectifyService.register(Crud.class);
         binder.bind(CrudResource.class);
+        binder.bind(GsonMarshal.class);
     }
 
 

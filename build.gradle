@@ -5,6 +5,13 @@ apply plugin: 'war'
 sourceCompatibility = 1.7
 version = '1.0'
 
+def gradleHomeString = System.getenv('APPENGINE_HOME');
+if(gradleHomeString == null) {
+    throw new Exception("APPENGINE_HOME is not defined");
+}
+
+def appengineHome = new File(gradleHomeString);
+
 buildscript {
     repositories {
         mavenCentral()
@@ -34,6 +41,13 @@ dependencies {
     compile 'org.jboss.resteasy:resteasy-guice:3.0.10.Final'
     compile 'com.googlecode.objectify:objectify:5.1.4'
     compile 'com.google.appengine:appengine:1.9.17'
+    compile 'com.google.code.gson:gson:2.3.1'
+    runtime 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+
+
+    compile files( new File(appengineHome, '/lib/user/appengine-api-1.0-sdk-1.9.17.jar'))
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
+
 }

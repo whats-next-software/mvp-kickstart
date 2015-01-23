@@ -1,11 +1,13 @@
 package whatsnext.mvpkickstart;
 
+import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 /**
  * Copyright (C) What's Next Software, LLC All Rights Reserved
  * Created by wayne on 1/22/2015.
  */
+@Entity
 public class Crud {
 
     @Id
@@ -16,6 +18,8 @@ public class Crud {
         this.id = id;
         this.name = name;
     }
+
+    private Crud(){};
 
     public String getName() {
         return name;

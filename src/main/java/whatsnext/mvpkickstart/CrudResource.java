@@ -5,6 +5,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -23,6 +24,6 @@ public class CrudResource {
 
     @GET
     public java.util.List<Crud> getNew() {
-        return ofy().load().type(Crud.class).distinct(false).list();
+        return new ArrayList<>(ofy().load().type(Crud.class).list());
     }
 }
