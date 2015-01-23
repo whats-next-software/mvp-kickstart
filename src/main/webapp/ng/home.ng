@@ -1,6 +1,11 @@
 <div>
+    <form novalidate class="simple-form">
+        Id: <input type="text" ng-model="newCrud.id"/>
+        Name: <input type="text" ng-model="newCrud.name"/>
+        <input type="submit" ng-click="save(newCrud)" value="Save"/>
+    </form>
     <ul>
-        <li class="animate-repeat" ng-repeat="crud in cruds">
+        <li class="animate-repeat" ng-repeat="crud in crudsQuery">
             {{$index + 1}} Id: {{crud.id}} Name: {{crud.name}}
         </li>
     </ul>

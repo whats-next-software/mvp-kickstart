@@ -1,8 +1,8 @@
 define(
-    ['jquery', 'angular', 'angularRoute', 'angularAnimate', 'angularResource'],
+    ['jquery', 'angular', 'angularRoute', 'angularAnimate', 'angularResource', 'angularUuidService'],
     function ($, angular) {
 
-        var app = angular.module('mvp-kickstart', ['ngRoute', 'ngAnimate', 'ngResource']);
+        var app = angular.module('mvp-kickstart', ['ngRoute', 'ngAnimate', 'ngResource', 'uuid']);
         app.config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/home', {
                 templateUrl: 'ng/home.ng',
@@ -24,6 +24,14 @@ define(
             })
         }]);
 
+        app.factory('NewCrud', ['$resource', function($resource) {
+            return $resource('cruds/:id', null, {
+                update: {
+                    method:'PUT'
+                }
+            })
+        }]);
+
         app.directive("example-directive", function () {
             return {
                 restrict: 'A',
@@ -33,8 +41,13 @@ define(
         });
 
 
-        app.controller("HomeController", ['$scope', 'Cruds', function ($scope, cruds) {
-            $scope.cruds = cruds.query();
+        app.controller("HomeController", ['$scope', 'Cruds', 'NewCrud', function ($scope, cruds, newCrud) {
+            $scope.crudsQuery = cruds.query();
+            $scope.newCrud = {id:"", name:""};
+            $scope.save = function(crud) {
+                console.log("Saving: "+crud.id+" "+crud.name);
+                newCrud.update({id:crud.id}, crud);
+            }
         }]);
 
         return app;

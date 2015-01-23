@@ -1,9 +1,6 @@
 package whatsnext.mvpkickstart;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -20,6 +17,13 @@ public class CrudResource {
     @Path("{name}")
     public void createNew(@PathParam("name") final String name) {
         ofy().save().entity(new Crud(UUID.randomUUID().toString(), name));
+    }
+
+    @PUT
+    @Path("{id}")
+    public void createNew(@PathParam("id") final String id, Crud crud) {
+        crud.setId(id);
+        ofy().save().entity(crud);
     }
 
     @GET

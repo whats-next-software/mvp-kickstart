@@ -5,6 +5,7 @@ require.config({
         'angularAnimate' : '/bower_components/angular-animate/angular-animate.min',
         'angularRoute' : '/bower_components/angular-route/angular-route.min',
         'angularResource' : '/bower_components/angular-resource/angular-resource.min',
+        'angularUuidService' : '/bower_components/angular-uuid-service/uuid-svc.min',
         'app' : '/ng/app'
     },
     shim: {
@@ -22,6 +23,9 @@ require.config({
             deps: ['angular']
         },
         'angularResource': {
+            deps: ['angular']
+        },
+        'angularUuidService': {
             deps: ['angular']
         }
     }
